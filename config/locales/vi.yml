@@ -2,7 +2,7 @@ vi:
   index:
     home: "Trang chủ"
     help: "Trợ giúp"
-    title: "Thiên đường thực phẩm"
+    title: "Thiên đường ẩm thực"
     vi: "Tiếng Việt"
     en: "Tiếng Anh"
     language: "Ngôn ngữ"
@@ -10,6 +10,13 @@ vi:
     products: "Ẩm thực"
     categories: "Phân loại"
     currency: "VND"
+    login: "Đăng nhập"
+    logout: "Đăng xuất"
+    wrong_login: "Email hoặc mật khẩu không hợp lệ"
+    cart: "Giỏ hàng"
+    order: "Đơn hàng"
+    remember_me: "Ghi nhớ đăng nhập"
+    password: "Mật Khẩu"
   category:
     nil: "Loại thực phẩm không tồn tại"
   product:

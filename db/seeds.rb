@@ -25,3 +25,8 @@ categories = Category.order(:created_at).take(6)
   end
 end
 
+User.create!(name: "LocNgu",
+             email: "a@a.a",
+             password: "123123",
+             password_confirmation: "123123")
+
