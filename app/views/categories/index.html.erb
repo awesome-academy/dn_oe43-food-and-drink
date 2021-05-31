@@ -1,0 +1,8 @@
+<% provide :title, t("index.categories") %>
+<ul class="categories">
+  <% @categories.each do |category| %>
+    <li>
+      <%= link_to category.name, category %>
+    </li>
+  <% end %>
+</ul>

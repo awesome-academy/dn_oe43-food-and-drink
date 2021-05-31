@@ -46,3 +46,9 @@ config/database.yml
 config/credentials.yml.enc
 spec/
 test/
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
+
+config/settings/

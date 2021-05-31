@@ -1,0 +1,7 @@
+<% provide :title, @category.name %>
+<h1>
+  <%= @category.name %>
+</h1>
+<% if @products.any? %>
+  <%= render @products %>
+<% end %>

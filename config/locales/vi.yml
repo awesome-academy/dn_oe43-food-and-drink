@@ -6,3 +6,14 @@ vi:
     vi: "Tiếng Việt"
     en: "Tiếng Anh"
     language: "Ngôn ngữ"
+    name: "Tên"
+    products: "Ẩm thực"
+    categories: "Phân loại"
+    currency: "VND"
+  category:
+    nil: "Loại thực phẩm không tồn tại"
+  product:
+    quantity: "Số lượng"
+    price: "Giá"
+    description: "Mô tả"
+    nil: "Sản phẩm không tồn tại"

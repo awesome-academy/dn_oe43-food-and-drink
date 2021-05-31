@@ -1,0 +1,14 @@
+<% provide :title, @product.name %>
+<aside class="col-md-4">
+  <section class="user_info">
+    <h1>
+      <%= @product.name %>
+    </h1>
+    <ul>
+      <%= image_tag "https://media.gettyimages.com/photos/different-types-of-food-on-rustic-wooden-table-picture-id861188910?s=612x612", size: Settings.image.size %>
+      <li><%= t "product.price" %>:&ensp;<%= number_to_currency(@product.price, unit: t("index.currency")) %></li>
+      <li><%= t "product.quantity" %>:&ensp;<%= @product.quantity %></li>
+      <li><%= t "product.description" %>:&ensp;<%= @product.description %></li>
+    </ul>
+  </section>
+</aside>
