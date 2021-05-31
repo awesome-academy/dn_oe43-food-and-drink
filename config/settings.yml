@@ -1,5 +1,6 @@
 image:
   size: 250
+  minisize: 100
 user:
   email:
     max_length: 28

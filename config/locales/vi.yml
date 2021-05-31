@@ -17,6 +17,7 @@ vi:
     order: "Đơn hàng"
     remember_me: "Ghi nhớ đăng nhập"
     password: "Mật Khẩu"
+    buy_now: "Mua ngay !!"
   category:
     nil: "Loại thực phẩm không tồn tại"
   product:
@@ -24,3 +25,13 @@ vi:
     price: "Giá"
     description: "Mô tả"
     nil: "Sản phẩm không tồn tại"
+    name: "Tên"
+    image: "Ảnh"
+    total_price: "Tổng giá: "
+  cart:
+    nothing: "Giỏ hàng của bạn rỗng"
+    your: "Giỏ hàng của bạn"
+    add_item: "%{name} đã được thêm vào giỏ hàng"
+    must_login: "Bạn phải đăng nhập trước khi mua sắm ^^ "
+    total: "Tổng giá trị giỏ hàng:  "
+    add: "Thêm vào giỏ hàng"

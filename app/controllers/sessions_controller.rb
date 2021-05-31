@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
   def handle_login user
     log_in user
     params[:session][:remember_me] == "1" ? remember(user) : forget(user)
+    session[:cart] ||= []
     redirect_to root_path
   end
 end

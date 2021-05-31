@@ -9,6 +9,7 @@
       <li><%= t "product.price" %>:&ensp;<%= number_to_currency(@product.price, unit: t("index.currency")) %></li>
       <li><%= t "product.quantity" %>:&ensp;<%= @product.quantity %></li>
       <li><%= t "product.description" %>:&ensp;<%= @product.description %></li>
+      <li><%= link_to t("cart.add"), add_to_cart_path(@product.id), method: :post %></li>
     </ul>
   </section>
 </aside>

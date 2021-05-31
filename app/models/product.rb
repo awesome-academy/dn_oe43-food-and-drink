@@ -4,4 +4,5 @@ class Product < ApplicationRecord
   belongs_to :category
 
   scope :asc_name, ->{order :name}
+  scope :load_cart, ->(product_id){where("id IN (?)", product_id)}
 end
