@@ -1,0 +1,9 @@
+<div class="col-6 col-md-4 col-lg-3 mt-4" style="text-align: center">
+  <%= link_to product do %>
+    <%= image_tag "https://media.gettyimages.com/photos/different-types-of-food-on-rustic-wooden-table-picture-id861188910?s=612x612", size: Settings.image.size %>
+    <p class="pl-3 mb-0" style="color:black"><%= product.name %></p>
+    <b class="pl-2" style="color:black">
+      <%= number_to_currency(product.price, unit: t("index.currency")) %>
+    </b>
+  <% end %>
+</div>

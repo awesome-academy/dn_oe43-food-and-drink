@@ -6,3 +6,15 @@ en:
     vi: "Vietnamese"
     en: "English"
     language: "Language"
+    name: "Name"
+    products: "Products"
+    categories: "Categories"
+    currency: "$"
+  category:
+    nil: "Category does not exist !"
+  product:
+    quantity: "Quantity"
+    price: "Price"
+    description: "Description"
+    nil: "Product does not exist !"
+

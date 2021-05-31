@@ -3,5 +3,7 @@ Rails.application.routes.draw do
     root to: "static_pages#home"
     get "static_pages/home"
     get "static_pages/help"
+    resources :categories, only: [:show, :index]
+    resources :products, only: [:show, :index]
   end
 end
