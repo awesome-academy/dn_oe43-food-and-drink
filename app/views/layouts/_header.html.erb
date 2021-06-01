@@ -6,6 +6,22 @@
         <li><%= link_to t("index.categories"), categories_path %></li>
         <li><%= link_to t("index.home"), static_pages_home_path %></li>
         <li><%= link_to t("index.help"), static_pages_help_path %></li>
+        <% if logged_in? %>
+          <li><%= link_to t("index.cart"), "#" %></li>
+          <li class="dropdown">
+            <%= link_to "#", class: "dropdown-toggle", "data-toggle": "dropdown" do %>
+              <%= t "index.account" %>
+              <b class="caret"></b>
+            <% end %>
+            <ul class="dropdown-menu">
+              <li><%= link_to t("index.order"), "#" %></li>
+              <li class="divider"></li>
+              <li><%= link_to t("index.logout"), logout_path, method: :delete %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li><%= link_to t("index.login"), login_path %></li>
+        <% end %>
         <li class="dropdown">
           <%= link_to "#", class: "dropdown-toggle", "data-toggle": "dropdown" do %>
             <%= t "index.language" %>

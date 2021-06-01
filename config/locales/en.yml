@@ -10,6 +10,13 @@ en:
     products: "Products"
     categories: "Categories"
     currency: "$"
+    login: "Login"
+    logout: "Logout"
+    wrong_login: "Email or password are invalid !!"
+    cart: "Cart"
+    order: "Order"
+    remember_me: "Remember me on this computer"
+    password: "Password"
   category:
     nil: "Category does not exist !"
   product:

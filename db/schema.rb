@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_091438) do
+ActiveRecord::Schema.define(version: 2021_06_01_035849) do
 
   create_table "categories", charset: "utf8mb3", force: :cascade do |t|
     t.string "name"
@@ -68,6 +68,8 @@ ActiveRecord::Schema.define(version: 2021_05_27_091438) do
     t.integer "role", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "remmeber_digest"
+    t.string "remember_digest"
   end
 
   add_foreign_key "order_items", "orders"
