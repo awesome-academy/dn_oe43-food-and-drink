@@ -1,5 +1,6 @@
 <% provide :title, t("cart.your") %>
 <h1><%= t"cart.your"%> (<%= @products.count %>)</h1>
+<p><%= link_to t("cart.clear"), clear_cart_path, method: :delete %></p>
 <% if @products.any? %>
   <table width="100%">
     <tr>
@@ -21,10 +22,15 @@
         <span><%= number_to_currency(product.price, unit: t("index.currency")) %></span>
       </td>
       <td class="cart_quantity">
-        <span><%= session["quantity#{product.id}"] %></span>
+        <span font-size="500%"><%=link_to "-", descrease_path(product.id), method: :post %></span>
+        <span><%= session[:cart]["#{product.id}"] %></span>
+        <span font-size="500%"><%=link_to "+", increase_path(product.id), method: :post %></span>
       </td>
       <td class="total_price">
-        <%= number_to_currency((session["quantity#{product.id}"] * product.price), unit: t("index.currency")) %>
+        <%= number_to_currency((session[:cart]["#{product.id}"] * product.price), unit: t("index.currency")) %>
+      </td>
+      <td>
+        <%= link_to t("cart.remove"), remove_cart_item_path(product.id), method: :post %>
       </td>
     </tr>
     <% end %>

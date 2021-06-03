@@ -8,8 +8,10 @@ Rails.application.routes.draw do
     delete "/logout", to: "sessions#destroy"
     post "carts/create/:id", to: "carts#create", as: "add_to_cart"
     get "carts/show", as: "cart"
-    get "carts/remove"
-    get "carts/destroy"
+    post "carts/increase/:id", to: "carts#increase", as: "increase"
+    post "carts/descrease/:id", to: "carts#descrease", as: "descrease"
+    post "carts/remove/:id", to: "carts#remove", as: "remove_cart_item"
+    delete "clear_cart", to: "carts#destroy"
     resources :categories, only: [:show, :index]
     resources :products, only: [:show, :index]
   end
