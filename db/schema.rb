@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2021_06_01_035849) do
     t.integer "role", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "remmeber_digest"
     t.string "remember_digest"
   end
 

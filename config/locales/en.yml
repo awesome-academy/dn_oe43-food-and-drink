@@ -17,6 +17,7 @@ en:
     order: "Order"
     remember_me: "Remember me on this computer"
     password: "Password"
+    buy_now: "Buy now !!"
   category:
     nil: "Category does not exist !"
   product:
@@ -24,4 +25,15 @@ en:
     price: "Price"
     description: "Description"
     nil: "Product does not exist !"
+    name: "Name"
+    image: "Image"
+    total_price: "Total_price: "
+  cart:
+    nothing: "Nothing in your eye"
+    your: "Your cart"
+    add_item: "%{name} was added to your cart"
+    must_login: "You must log in before shopping ^^ "
+    total: "Total cart:  "
+    add : "Add to cart"
+
 
