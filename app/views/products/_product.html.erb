@@ -5,6 +5,6 @@
     <b class="pl-2" style="color:black">
       <%= number_to_currency(product.price, unit: t("index.currency")) %>
     </b>
-    <p id="add"><%= link_to t("cart.add"), add_to_cart_path(product.id), method: :post %></p>
+    <p id="add"><%= link_to t("cart.add"), add_to_carts_path(product.id), method: :post %></p>
   <% end %>
 </div>
