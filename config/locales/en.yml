@@ -29,11 +29,17 @@ en:
     image: "Image"
     total_price: "Total_price: "
   cart:
-    nothing: "Nothing in your eye"
+    nothing: "Nothing in your eyes"
     your: "Your cart"
     add_item: "%{name} was added to your cart"
     must_login: "You must log in before shopping ^^ "
     total: "Total cart:  "
     add : "Add to cart"
+    over: "I can supply you with that quantity"
+    clear: "Clear the cart"
+    remove: "Remove"
+    cleared: "Cleared your cart successfully !"
+    item_removed: "Removed %{name} successfully !"
+    empty: "Your cart is empty, nothing to clear !"
 
 

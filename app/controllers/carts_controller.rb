@@ -1,28 +1,56 @@
 class CartsController < ApplicationController
-  before_action :must_login, :check_product, only: :create
+  before_action :must_login, :init_cart
+  before_action :load_product, only: [:create, :increase, :descrease, :remove]
   before_action :handle_cart, only: :show
+  before_action :empty_cart?, only: :destroy
 
   def create
     flash[:success] = t("cart.add_item", name: @product.name)
     handle_quantity
-    session[:cart] << @product.id
     redirect_to root_path
   end
 
   def show
-    @products = Product.load_cart(session[:cart]).paginate(page: params[:page])
+    @products = Product.load_cart(session[:cart].keys)
+                       .paginate(page: params[:page])
     @totals = @products.reduce(0) do |sum, p|
-      sum + session["quantity#{p.id}"] * p.price
+      sum + session[:cart][p.id.to_s] * p.price
     end
   end
 
-  def remove; end
+  def remove
+    delete_cart_item @product.id
+    flash[:success] = t("cart.item_removed", name: @product.name)
+    redirect_to cart_path
+  end
 
-  def destroy; end
+  def destroy
+    session[:cart] = {}
+    flash[:success] = t "cart.cleared"
+    redirect_to cart_path
+  end
+
+  def increase
+    if session[:cart][@product.id.to_s] == @product.quantity
+      flash.now[:danger] = t "cart.over"
+    else
+      session[:cart][@product.id.to_s] += 1
+    end
+    redirect_to cart_path
+  end
+
+  def descrease
+    if session[:cart][@product.id.to_s] == 1
+      delete_cart_item @product.id
+    else
+      session[:cart][@product.id.to_s] -= 1
+    end
+    redirect_to cart_path
+  end
 
   private
 
-  def check_product
+  def load_product
     @product = Product.find_by id: params[:id]
     return if @product
 
@@ -31,10 +59,10 @@ class CartsController < ApplicationController
   end
 
   def handle_quantity
-    if session["quantity#{@product.id}"].nil?
-      session["quantity#{@product.id}"] = 1
+    if session[:cart].include? @product.id.to_s
+      session[:cart][@product.id.to_s] += 1
     else
-      session["quantity#{@product.id}"] += 1
+      session[:cart][@product.id.to_s] = 1
     end
   end
 
@@ -49,8 +77,23 @@ class CartsController < ApplicationController
     session[:cart].each do |id|
       break if Product.find_by id: id
 
-      session[:cart].delete id
-      session.delete "quantity#{id}"
+      delete_cart_item id
     end
+  end
+
+  def delete_cart_item id
+    session[:cart].delete(id.to_s)
+  end
+
+  def empty_cart?
+    return unless session[:cart] == {}
+
+    flash[:danger] = t "cart.empty"
+    redirect_to cart_path
+  end
+
+  def init_cart
+    session[:cart] ||= Hash.new
+    @cart = session[:cart]
   end
 end
