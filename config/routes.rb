@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         delete :destroy, as: "clear"
       end
     end
+    resources :orders, only: [:new, :create, :show]
     resources :categories, only: [:show, :index]
     resources :products, only: [:show, :index]
   end

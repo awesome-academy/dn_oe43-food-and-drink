@@ -1,0 +1,53 @@
+<% provide :title, t("order.new") %>
+<h1><%= t "order.new" %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @order, url: orders_path do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+      <%= f.label :name , t("order.name") %>
+      <%= f.text_field :name %>
+      <%= f.label :address, t("order.address") %>
+      <%= f.text_field :address %>
+      <%= f.label :phone, t("order.phone") %>
+      <%= f.text_field :phone %>
+      <% if @products.any? %>
+        <table width="100%" id ="cart">
+          <tr>
+            <td><%= t "product.image" %></td>
+            <td><%= t "product.name" %></td>
+            <td><%= t "product.price" %></td>
+            <td><%= t "product.quantity" %></td>
+            <td><%= t "product.total_price" %></td>
+          </tr>
+          <% @products.each do |product| %>
+          <tr class="cart_item">
+            <td class="image">
+              <%= image_tag "https://media.gettyimages.com/photos/different-types-of-food-on-rustic-wooden-table-picture-id861188910?s=612x612", size: Settings.image.minisize %>
+            </td>
+            <td class="name">
+              <span><%= product.name %></span>
+            </td>
+            <td class="price">
+              <span><%= number_to_currency(product.price, unit: t("index.currency")) %></span>
+            </td>
+            <td class="cart_quantity" >
+              <span><%= session[:cart]["#{product.id}"] %></span>
+            </td>
+            <td class="total_price">
+              <%= number_to_currency((session[:cart]["#{product.id}"] * product.price), unit: t("index.currency")) %>
+            </td>
+          </tr>
+          <% end %>
+        </table>
+        <h2 align="right">
+          <%= t("cart.total") %><%= number_to_currency(@totals.round(2), unit: t("index.currency")) %>
+        </h2>
+      <% else %>
+        <h1 align="center"><%= t "cart.nothing" %></h1>
+        <p align="center"><%= link_to t("index.buy_now"), root_path %>
+      <% end %>
+      <%= f.submit t("order.checkout"), class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
