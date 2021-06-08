@@ -18,6 +18,7 @@ vi:
     remember_me: "Ghi nhớ đăng nhập"
     password: "Mật Khẩu"
     buy_now: "Mua ngay !!"
+    update: "Cập nhật"
   category:
     nil: "Loại thực phẩm không tồn tại"
   product:
@@ -28,6 +29,7 @@ vi:
     name: "Tên"
     image: "Ảnh"
     total_price: "Tổng giá: "
+    in_stock: "Còn hàng"
   cart:
     nothing: "Giỏ hàng của bạn rỗng"
     your: "Giỏ hàng của bạn"

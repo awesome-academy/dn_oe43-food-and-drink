@@ -6,12 +6,17 @@ Rails.application.routes.draw do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
-    post "carts/create/:id", to: "carts#create", as: "add_to_cart"
-    get "carts/show", as: "cart"
-    post "carts/increase/:id", to: "carts#increase", as: "increase"
-    post "carts/descrease/:id", to: "carts#descrease", as: "descrease"
-    post "carts/remove/:id", to: "carts#remove", as: "remove_cart_item"
-    delete "clear_cart", to: "carts#destroy"
+    resources :carts do
+      collection do
+        post "create/:id", to: "carts#create", as: "add_to"
+        post "increase/:id", to: "carts#increase", as: "increase"
+        post "descrease/:id", to: "carts#descrease", as: "descrease"
+        post "remove/:id", to: "carts#remove", as: "remove_item_from"
+        post "update/:id", to: "carts#update", as: "update"
+        get :show
+        delete :destroy, as: "clear"
+      end
+    end
     resources :categories, only: [:show, :index]
     resources :products, only: [:show, :index]
   end

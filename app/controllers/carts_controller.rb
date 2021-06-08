@@ -1,7 +1,8 @@
 class CartsController < ApplicationController
   before_action :must_login, :init_cart
-  before_action :load_product, only: [:create, :increase, :descrease, :remove]
+  before_action :load_product, except: [:show, :destroy]
   before_action :handle_cart, only: :show
+  before_action :check_quantity, only: :update
   before_action :empty_cart?, only: :destroy
 
   def create
@@ -27,7 +28,7 @@ class CartsController < ApplicationController
   def destroy
     session[:cart] = {}
     flash[:success] = t "cart.cleared"
-    redirect_to cart_path
+    redirect_to carts_path
   end
 
   def increase
@@ -45,7 +46,18 @@ class CartsController < ApplicationController
     else
       session[:cart][@product.id.to_s] -= 1
     end
-    redirect_to cart_path
+    respond_to do |format|
+      format.html{redirect_to carts_path}
+      format.js
+    end
+  end
+
+  def update
+    session[:cart][@product.id.to_s] = params[:session][:quantity].to_i
+    respond_to do |format|
+      format.html{redirect_to carts_path}
+      format.js
+    end
   end
 
   private
@@ -89,11 +101,19 @@ class CartsController < ApplicationController
     return unless session[:cart] == {}
 
     flash[:danger] = t "cart.empty"
-    redirect_to cart_path
+    redirect_to carts_path
   end
 
   def init_cart
-    session[:cart] ||= Hash.new
-    @cart = session[:cart]
+    session[:cart] ||= {}
+  end
+
+  def check_quantity
+    return if params[:session][:quantity].to_i < @product.quantity &&
+              params[:session][:quantity].to_i.positive?
+
+    session[:cart][@product.id.to_s] = 1
+    flash[:danger] = t "cart.over"
+    redirect_to carts_path
   end
 end

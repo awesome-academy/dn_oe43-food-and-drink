@@ -18,6 +18,7 @@ en:
     remember_me: "Remember me on this computer"
     password: "Password"
     buy_now: "Buy now !!"
+    update: "Update"
   category:
     nil: "Category does not exist !"
   product:
@@ -28,6 +29,7 @@ en:
     name: "Name"
     image: "Image"
     total_price: "Total_price: "
+    in_stock: "In stock"
   cart:
     nothing: "Nothing in your eyes"
     your: "Your cart"
