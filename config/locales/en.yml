@@ -19,6 +19,8 @@ en:
     password: "Password"
     buy_now: "Buy now !!"
     update: "Update"
+    order: "Order"
+    error: "Something is wrong happening !"
   category:
     nil: "Category does not exist !"
   product:
@@ -43,5 +45,16 @@ en:
     cleared: "Cleared your cart successfully !"
     item_removed: "Removed %{name} successfully !"
     empty: "Your cart is empty, nothing to clear !"
+  order:
+    checkout: "Checkout"
+    name: "Name of Receiver"
+    address: "Address of Receiver"
+    phone: "Phone of Receiver"
+    new: "New order"
+    your: "Your Order"
+    time: "Time Order"
+    nil: "Order doesn't exist"
+    success: "Order successfully. Thank you for believing us"
+
 
 

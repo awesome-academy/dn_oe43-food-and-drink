@@ -48,6 +48,9 @@
   <h2 align="right">
     <%= t("cart.total") %><%= number_to_currency(@totals.round(2), unit: t("index.currency")) %>
   </h2>
+  <h1 align="right">
+    <%= link_to t("index.order"), new_order_path %>
+  </h1>
 <% else %>
   <h1 align="center"><%= t "cart.nothing" %></h1>
   <p align="center"><%= link_to t("index.buy_now"), root_path %>

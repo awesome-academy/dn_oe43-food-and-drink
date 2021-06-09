@@ -1,0 +1,16 @@
+<% provide :title, t("order.your") %>
+<h1><%= t "order.your" %></h1>
+<p><label><%= t "order.time" %>: <%= @order.created_at %></label></p>
+<p><label><%= t "order.name" %>: <%= @order.name %></label></p>
+<p><label><%= t "order.address" %>: <%= @order.address %></label></p>
+<p><label><%= t "order.phone" %>: <%= @order.phone %></label></p>
+<table width="100%">
+  <% @order.order_items.each do |item| %>
+    <tr>
+      <td><%= item.product.name %></td>
+      <td><%= item.quantity %></td>
+      <td><%= number_to_currency(item.product.price, unit: t("index.currency")) %></td>
+    </tr>
+  <% end %>
+</table>
+<h1 align="right"><label><%= t "order.total" %>: <%= number_to_currency(@order.total, unit: t("index.currency")) %></h1>

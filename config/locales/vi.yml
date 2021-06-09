@@ -19,6 +19,8 @@ vi:
     password: "Mật Khẩu"
     buy_now: "Mua ngay !!"
     update: "Cập nhật"
+    order: "Đặt hàng"
+    error: "Có gì đó sai sai !"
   category:
     nil: "Loại thực phẩm không tồn tại"
   product:
@@ -43,3 +45,13 @@ vi:
     cleared: "Xóa giỏ hàng !"
     item_removed: "Loại bỏ %{name} thành công !"
     empty: "Giỏ hàng rỗng, không có gì để xóa !"
+  order:
+    checkout: "Thanh toán"
+    name: "Tên người nhận hàng"
+    address: "Địa chỉ nhận hàng"
+    phone: "Số điện thoại nhận hàng "
+    new: "Đơn hàng mới"
+    your: "Đơn hàng của bạn"
+    time: "Thời gian đặt hàng"
+    nil: "Đơn hàng không tồn tại"
+    success: "Đặt hàng thành công. Cảm ơn bạn đã tin tưởng chúng tôi"

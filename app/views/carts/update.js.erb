@@ -1,2 +1,2 @@
-$('cart').html('j<%= render :show %>')
+$('#cart').html('<%= j render :show %>')
 $('#cart_quantity').html('<%= session[:cart]["#{product.id}"] %>')

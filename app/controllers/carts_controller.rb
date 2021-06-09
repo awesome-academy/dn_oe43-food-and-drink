@@ -37,7 +37,10 @@ class CartsController < ApplicationController
     else
       session[:cart][@product.id.to_s] += 1
     end
-    redirect_to cart_path
+    respond_to do |format|
+      format.html{redirect_to carts_path}
+      format.js
+    end
   end
 
   def descrease
@@ -102,10 +105,6 @@ class CartsController < ApplicationController
 
     flash[:danger] = t "cart.empty"
     redirect_to carts_path
-  end
-
-  def init_cart
-    session[:cart] ||= {}
   end
 
   def check_quantity
