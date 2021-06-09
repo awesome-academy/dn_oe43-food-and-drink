@@ -1,0 +1,11 @@
+<li>
+  <p><%= order.status %></p>
+  <span class="product"><%=link_to order.name, order %></span>
+  <p>
+    <span><%= number_to_currency(order.total, unit: t("index.currency")) %></span> |
+    <span><%= t("order.count", count: order.order_items.count) %></span>
+  </p>
+  <span>
+    <%= t("order.ago", time: (time_ago_in_words order.created_at)) %>
+</li>
+

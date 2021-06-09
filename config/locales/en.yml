@@ -55,6 +55,10 @@ en:
     time: "Time Order"
     nil: "Order doesn't exist"
     success: "Order successfully. Thank you for believing us"
+    ago: "Ordered %{time} ago"
+    count:
+        one: "%{count} dish"
+        other: "%{count} dishes"
 
 
 
