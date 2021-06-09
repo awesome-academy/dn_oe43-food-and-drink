@@ -23,6 +23,10 @@ class OrdersController < ApplicationController
     redirect_to root_path
   end
 
+  def index
+    @orders = current_user.orders.latest.paginate(page: params[:page])
+  end
+
   private
 
   def load_products

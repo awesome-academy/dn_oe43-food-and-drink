@@ -8,6 +8,8 @@ class Order < ApplicationRecord
     delivered: 2
   }
 
+  scope :latest, ->{order(created_at: :desc)}
+
   def add_order_items cart, total
     cart.each do |k, v|
       item = order_items.build product_id: k,

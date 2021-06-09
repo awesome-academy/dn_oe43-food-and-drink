@@ -55,3 +55,7 @@ vi:
     time: "Thời gian đặt hàng"
     nil: "Đơn hàng không tồn tại"
     success: "Đặt hàng thành công. Cảm ơn bạn đã tin tưởng chúng tôi"
+    ago: "Đã đặt %{time} trước"
+    count:
+        one: "%{count} món"
+        other: "%{count} món"

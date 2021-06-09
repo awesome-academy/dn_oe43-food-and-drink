@@ -1,0 +1,6 @@
+<% provide :title, t("order.your") %>
+<h1><%= t "order.your"%>(<%=@orders.count %>)</h1>
+<ul class="orders">
+  <%= render @orders %>
+</ul>
+<%= will_paginate @orders%>
