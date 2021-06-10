@@ -1,5 +1,5 @@
-<li>
-  <p><%= order.status %></p>
+<li class="list-group-item">
+  <span class="badge badge-success"><%= order.status %></span>
   <span class="product"><%=link_to order.name, order %></span>
   <p>
     <span><%= number_to_currency(order.total, unit: t("index.currency")) %></span> |

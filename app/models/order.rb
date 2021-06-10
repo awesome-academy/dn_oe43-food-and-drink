@@ -5,7 +5,8 @@ class Order < ApplicationRecord
   enum status: {
     waiting: 0,
     delivering: 1,
-    delivered: 2
+    delivered: 2,
+    canceled: 3
   }
 
   scope :latest, ->{order(created_at: :desc)}

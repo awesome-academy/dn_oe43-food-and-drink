@@ -1,0 +1,24 @@
+<%= render "filter_form" %>
+<% if params[:q].present? %>
+  <h3><%= t("filter.result", name: params[:q]) %></h3>
+<% end %>
+<% if @category.present? %>
+  <h3><%= t("filter.category", name: @category.name) %></h3>
+<% end %>
+<% if params[:s].present? %>
+  <% if params[:s].eql? "asc"%>
+    <h3><%= t("filter.price", direction: "↑") %></h3>
+  <% else %>
+    <h3><%= t("filter.price", direction: "↓") %></h3>
+  <% end %>
+<% end %>
+
+
+<% if @products.empty? %>
+  <h1><%= t "filter.not_found" %></h1>
+<% else %>
+  <ul>
+    <%= render @products %>
+  </ul>
+<% end %>
+<%= will_paginate @products %>

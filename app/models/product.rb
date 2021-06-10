@@ -5,4 +5,13 @@ class Product < ApplicationRecord
 
   scope :asc_name, ->{order :name}
   scope :load_cart, ->(product_ids){where(id: product_ids)}
+  scope :search, (lambda do |query|
+                    if query
+                      where("name like ? or description like ?",
+                            "%#{query}%", "%#{query}%")
+                    end
+                  end)
+  scope :filters, ->(filters){where("category_id = ?", filters)}
+  scope :asc_price, ->{order :price}
+  scope :desc_price, ->{order(price: :desc)}
 end
