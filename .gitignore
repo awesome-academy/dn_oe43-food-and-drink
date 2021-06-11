@@ -44,8 +44,8 @@ yarn-debug.log*
 
 config/database.yml
 config/credentials.yml.enc
-spec/
 test/
+coverage/
 
 config/settings.local.yml
 config/settings/*.local.yml

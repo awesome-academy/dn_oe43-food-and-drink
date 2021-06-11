@@ -3,7 +3,7 @@ image:
   minisize: 100
 user:
   email:
-    max_length: 28
+    max_length: 56
     regex: !ruby/regexp /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   password:
     min_length: 6
