@@ -59,3 +59,11 @@ vi:
     count:
         one: "%{count} món"
         other: "%{count} món"
+  filter:
+    search: "Tìm kiếm"
+    select_category: "Chọn phân loại"
+    sort_price: "Sắp xếp giá"
+    sort: "Sắp xếp"
+    select: "Chọn"
+    result: "Kết quả '%{name}'"
+    not_found: "Không tìm thấy sản phẩm, vui lòng thử lại"

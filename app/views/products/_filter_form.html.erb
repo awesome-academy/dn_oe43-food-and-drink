@@ -1,0 +1,21 @@
+<div class="row">
+  <%= form_tag("/products", method: "get") do %>
+    <div class="col-lg-4">
+      <%= label_tag(:q, t("filter.search")) %>
+      <%= text_field_tag(:q) %>
+    </div>
+    <div class="col-lg-3">
+      <%= label_tag(:q, t("filter.select_category")) %>
+      <%= collection_select(:product, :category_id, Category.all,:id, :name) %>
+    </div>
+    <div class="col-lg-3">
+      <%= label_tag(:s, t("filter.sort_price")) %>
+      <%= select_tag(:s, options_for_select([["↑", :asc], ["↓", :desc]])) %>
+    </div>
+    <div class="col-lg-2">
+      <%= label_tag %>
+      <%= submit_tag(t("filter.sort")) %>
+    </div>
+  <% end %>
+</div>
+
