@@ -4,12 +4,14 @@ class Order < ApplicationRecord
 
   enum status: {
     waiting: 0,
-    delivering: 1,
-    delivered: 2,
-    canceled: 3
+    approved: 1,
+    delivering: 2,
+    delivered: 3,
+    canceled: 4
   }
 
   scope :latest, ->{order(created_at: :desc)}
+  scope :group_by_status, ->(status){where("status = ?", status)}
 
   def add_order_items cart, total
     cart.each do |k, v|
@@ -20,6 +22,14 @@ class Order < ApplicationRecord
       product.update! quantity: product.quantity - v
     end
     update! total: total
+  end
+
+  def cancel_order
+    order_items.each do |item|
+      product = Product.find_by! id: item.product_id
+      product.update! quantity: product.quantity + item.quantity
+    end
+    canceled!
   end
 
   validates :address, presence: true
