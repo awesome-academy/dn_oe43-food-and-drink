@@ -1,0 +1,14 @@
+<div class="row">
+  <%= form_tag("/orders", method: :get) do %>
+    <div class="col-lg-4">
+      <%= label_tag(:status, "Select status") %>
+      <%= select_tag :status, options_for_select(Order.statuses.map {|k, v| [k.capitalize, v]}), include_blank: "All"%>
+    </div>
+    <div class="col-lg-3">
+      <%= label_tag %>
+      <%= submit_tag "Select" %>
+    </div>
+  <% end %>
+</div>
+<%= render @orders %>
+<%= will_paginate @orders%>

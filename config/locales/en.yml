@@ -21,6 +21,7 @@ en:
     update: "Update"
     order: "Order"
     error: "Something is wrong happening !"
+    must_login: "You must log in before shopping ^^ "
   category:
     nil: "Category does not exist !"
   product:
@@ -59,6 +60,12 @@ en:
     count:
         one: "%{count} dish"
         other: "%{count} dishes"
+    cancel_success: "Canceled order successfully"
+    wrong_status: "Wrong order's status to do this action"
+    wrong_owner: "You're not the owner of order"
+    cancel: "Cancel the order"
+    next_status: "Next status"
+    next_success: "Change into next status successfully"
   filter:
     search: "Search for"
     select_category: "Select category"

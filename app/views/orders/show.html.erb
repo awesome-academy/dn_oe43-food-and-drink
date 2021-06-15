@@ -4,6 +4,8 @@
 <p><label><%= t "order.name" %>: <%= @order.name %></label></p>
 <p><label><%= t "order.address" %>: <%= @order.address %></label></p>
 <p><label><%= t "order.phone" %>: <%= @order.phone %></label></p>
+<p><label><%= t "order.status" %>: <%= @order.status %></label></p>
+
 <table width="100%">
   <% @order.order_items.each do |item| %>
     <tr>
@@ -14,3 +16,14 @@
   <% end %>
 </table>
 <h1 align="right"><label><%= t "order.total" %>: <%= number_to_currency(@order.total, unit: t("index.currency")) %></h1>
+<% if check_authorize @order %>
+  <h1 align="right">
+    <%= link_to t("order.cancel"), cancel_orders_path(@order.id), method: :post %>
+  </h1>
+<% end %>
+<% if current_user.admin? %>
+  <h1 align="right">
+    <%= link_to t("order.next_status"), admin_order_next_status_path(@order.id), method: :post %>
+  </h1>
+<% end %>
+

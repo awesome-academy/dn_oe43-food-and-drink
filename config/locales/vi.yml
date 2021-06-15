@@ -21,6 +21,7 @@ vi:
     update: "Cập nhật"
     order: "Đặt hàng"
     error: "Có gì đó sai sai !"
+    must_login: "Bạn phải đăng nhập trước khi mua sắm ^^ "
   category:
     nil: "Loại thực phẩm không tồn tại"
   product:
@@ -59,6 +60,12 @@ vi:
     count:
         one: "%{count} món"
         other: "%{count} món"
+    cancel_success: "Hủy đơn hàng thành công"
+    wrong_status: "Trạng thái đơn hàng không thể thực hiện tác vụ"
+    wrong_owner: "Đây không phải là đơn của bạn"
+    cancel: "Hủy đơn hàng"
+    next_status: "Trạng thái tiếp theo"
+    next_success: "Đổi sang trạng thái tiếp theo thành công"
   filter:
     search: "Tìm kiếm"
     select_category: "Chọn phân loại"

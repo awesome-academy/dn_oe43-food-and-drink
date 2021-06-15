@@ -17,8 +17,17 @@ Rails.application.routes.draw do
         delete :destroy, as: "clear"
       end
     end
-    resources :orders, only: [:new, :create, :show, :index]
+    resources :orders, except: [:update, :edit, :destroy] do
+        collection do
+            post "cancel/:id", to: "orders#cancel", as: "cancel"
+        end
+    end
     resources :categories, only: [:show, :index]
     resources :products, only: [:show, :index]
+    namespace :admin do
+        resources :orders, only: :index do
+            post "next_status", to: "orders#next_status"
+        end
+    end
   end
 end
