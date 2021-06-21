@@ -25,6 +25,8 @@ class Order < ApplicationRecord
   end
 
   def cancel_order
+    raise StandardException if order_items.empty?
+
     order_items.each do |item|
       product = Product.find_by! id: item.product_id
       product.update! quantity: product.quantity + item.quantity
