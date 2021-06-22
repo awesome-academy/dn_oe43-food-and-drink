@@ -7,7 +7,7 @@ FactoryBot.define do
 
     factory :user_with_orders do
       transient do
-        orders_count {10}
+        orders_count {15}
       end
 
       after(:create) do |user, evaluator|

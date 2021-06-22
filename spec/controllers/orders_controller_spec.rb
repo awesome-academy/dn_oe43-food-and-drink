@@ -51,7 +51,7 @@ describe OrdersController, type: :controller do
       expect(response).to redirect_to root_path
     end
 
-    it "return root_path and flash not owner if other user " do
+    it "return root_path and flash not owner if other user" do
       other_user = create(:user)
       log_in other_user
       get :show, params: {id: order.id}
