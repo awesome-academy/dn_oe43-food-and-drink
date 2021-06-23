@@ -1,5 +1,4 @@
 class ProductsController < ApplicationController
-  before_action :load_products, only: :index
   def show
     @product = Product.find_by id: params[:id]
     return if @product
@@ -9,17 +8,14 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.search(params[:q].downcase)
+    @products = Product.search(params[:q].downcase) if params[:q].present?
+    @products ||= Product.all
     handle_select_category
     handle_sort
     @products = @products.paginate(page: params[:page])
   end
 
   private
-
-  def load_products
-    @products = Product.paginate(page: params[:page])
-  end
 
   def handle_sort
     return unless params[:s]

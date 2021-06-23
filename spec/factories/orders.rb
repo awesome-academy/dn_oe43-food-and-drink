@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :order do
     user
     name { Faker::Name.name }
-    status { Faker::Number.between(from: 0, to: 3) }
+    status { Faker::Number.between(from: 0, to: 4) }
     phone { "0905123456" }
     address { Faker::Address.full_address }
 

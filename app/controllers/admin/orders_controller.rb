@@ -1,4 +1,4 @@
-class Admin::OrdersController < ApplicationController
+class Admin::OrdersController < AdminController
   before_action :load_order, only: :next_status
 
   include Admin::OrdersHelper
