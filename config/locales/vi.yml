@@ -74,3 +74,5 @@ vi:
     select: "Chọn"
     result: "Kết quả '%{name}'"
     not_found: "Không tìm thấy sản phẩm, vui lòng thử lại"
+  status:
+    select: "Chọn trang thái"

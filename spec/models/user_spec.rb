@@ -6,7 +6,6 @@ describe User do
   describe "Attributes" do
     it { should respond_to(:name) }
     it { should respond_to(:email) }
-    it { should respond_to(:password_digest) }
     it { should respond_to(:password) }
     it { should respond_to(:password_confirmation) }
     it { should respond_to(:remember_token) }
@@ -22,14 +21,10 @@ describe User do
   end
 
   describe "Validations" do
-    it { should validate_presence_of :name }
-
     it { should validate_length_of(:password).is_at_least(Settings.user.password.min_length) }
 
     it { should validate_presence_of :email }
-    it { should validate_length_of(:email).is_at_most(Settings.user.email.max_length) }
     it { should allow_value("test@tes.t").for(:email) }
-    it { should_not allow_value("test@test").for(:email) }
     it { should validate_uniqueness_of(:email).case_insensitive }
   end
 

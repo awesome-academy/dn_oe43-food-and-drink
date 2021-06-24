@@ -10,6 +10,7 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "bootstrap-sass", "3.4.1"
 gem "bootstrap-will_paginate", "1.0.0"
 gem "config"
+gem "devise"
 gem "factory_bot_rails"
 gem "faker", "2.1.2"
 gem "jbuilder", "~> 2.7"
@@ -26,6 +27,7 @@ gem "sqlite3", "~> 1.4"
 gem "turbolinks", "~> 5"
 gem "webpacker", "~> 5.0"
 gem "will_paginate", "3.1.8"
+
 group :test do
   gem "shoulda-matchers", "~> 4.0"
 end

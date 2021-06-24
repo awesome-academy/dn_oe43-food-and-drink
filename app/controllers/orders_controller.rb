@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :logged_in_user
+  before_action :authenticate_user!
   before_action :check_cart, :load_products,
                 :handle_total, only: [:new, :create]
   before_action :load_order, :check_order_owner, only: [:show, :cancel]

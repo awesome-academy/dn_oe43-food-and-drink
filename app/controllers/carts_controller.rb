@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :must_login, :init_cart
+  before_action :authenticate_user!, :init_cart
   before_action :load_product, except: [:show, :destroy]
   before_action :handle_cart, only: :show
   before_action :check_quantity, only: :update
@@ -114,5 +114,9 @@ class CartsController < ApplicationController
     session[:cart][@product.id.to_s] = 1
     flash[:danger] = t "cart.over"
     redirect_to carts_path
+  end
+
+  def init_cart
+    session[:cart] ||= {}
   end
 end

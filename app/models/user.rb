@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  devise :database_authenticatable, :registerable,
+         :rememberable, :validatable
   has_many :orders, dependent: :destroy
   has_many :ratings, dependent: :destroy
   before_save :downcase_email
@@ -39,17 +41,7 @@ class User < ApplicationRecord
 
   private
 
-  validates :email, format: {with: Settings.user.email.regex},
-                    length: {maximum: Settings.user.email.max_length},
-                    presence: true,
-                    uniqueness: true
-  validates :name, presence: true
-  validates :password, presence: true,
-                       length: {minimum: Settings.user.password.min_length}
-
   def downcase_email
     email.downcase!
   end
-
-  has_secure_password
 end

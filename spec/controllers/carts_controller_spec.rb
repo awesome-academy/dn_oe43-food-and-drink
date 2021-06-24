@@ -1,12 +1,11 @@
 require "rails_helper"
-include SessionsHelper
 
 describe CartsController do
   let!(:products) {create_list(:product, 15)}
   let!(:user) {create(:user)}
   let!(:product) {products.first}
   before (:each) do
-    log_in user
+    sign_in user
     session[:cart] = {product.id.to_s => 10}
   end
 
@@ -14,12 +13,6 @@ describe CartsController do
     it "show the current cart" do
       get :show
       expect(response).to render_template :show
-    end
-
-    it "redirect to login form and flash if not login" do
-      session[:user_id] = nil
-      get :show
-      expect(response).to redirect_to login_path
     end
 
     it "calculate the totals of total of products" do

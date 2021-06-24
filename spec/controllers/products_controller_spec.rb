@@ -27,11 +27,13 @@ describe ProductsController, type: :controller do
       expect(assigns(:products)).to match_array products
     end
 
-    it "populates an arrays of products with price order" do
+    it "populates an arrays of products with price order desc" do
       products = Product.desc_price
       get :index, params: {s: "desc"}
       expect(assigns(:products).to_a).to eq products
+    end
 
+    it "populates an arrays of products with price order asc" do
       products = Product.asc_price
       get :index, params: {s: "asc"}
       expect(assigns(:products).to_a).to eq products
