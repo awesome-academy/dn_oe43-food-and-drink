@@ -1,5 +1,4 @@
 require "rails_helper"
-include SessionsHelper
 
 describe OrdersController, type: :controller do
   let!(:user) { create(:user_with_orders) }
@@ -7,8 +6,8 @@ describe OrdersController, type: :controller do
   let!(:order) { orders.first }
 
   before(:each) do
-    log_in user
-    init_cart
+    sign_in user
+    session[:cart] ||= {}
   end
 
   describe "GET#index" do
@@ -53,7 +52,7 @@ describe OrdersController, type: :controller do
 
     it "return root_path and flash not owner if other user" do
       other_user = create(:user)
-      log_in other_user
+      sign_in other_user
       get :show, params: {id: order.id}
       expect(response).to redirect_to root_path
     end

@@ -1,14 +1,13 @@
 require "rails_helper"
-include SessionsHelper
 
-describe Admin::OrdersController ,type: :controller do
+describe Admin::OrdersController, type: :controller do
   let!(:user) { create(:user_with_orders, role: 0)}
   let!(:admin) { create(:user_with_orders, role: 1)}
   let!(:orders) {user.orders}
   let!(:order) {orders.first}
 
   before (:each) do
-    log_in admin
+    sign_in admin
   end
 
   describe "GET#index" do
@@ -19,7 +18,7 @@ describe Admin::OrdersController ,type: :controller do
     end
 
     it "redirect to root path and flash if user is not admin" do
-      log_in user
+      sign_in user
       get :index
       expect(response).to redirect_to root_path
     end

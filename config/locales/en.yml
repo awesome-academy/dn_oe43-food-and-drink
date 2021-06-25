@@ -76,6 +76,8 @@ en:
     not_found: "No product found, please try again"
     category: "Category: %{name}"
     price: "Price: %{direction}"
+  status:
+    select: "Select status"
 
 
 

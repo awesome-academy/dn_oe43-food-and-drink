@@ -3,9 +3,6 @@ Rails.application.routes.draw do
     root to: "static_pages#home"
     get "static_pages/home"
     get "static_pages/help"
-    get "/login", to: "sessions#new"
-    post "/login", to: "sessions#create"
-    delete "/logout", to: "sessions#destroy"
     resources :carts do
       collection do
         post "create/:id", to: "carts#create", as: "add_to"
@@ -29,5 +26,6 @@ Rails.application.routes.draw do
             post "next_status", to: "orders#next_status"
         end
     end
+    devise_for :users
   end
 end
