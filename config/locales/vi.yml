@@ -76,3 +76,5 @@ vi:
     not_found: "Không tìm thấy sản phẩm, vui lòng thử lại"
   status:
     select: "Chọn trang thái"
+  access_denied: "Bạn không được phân quyền cho hành động này"
+  not_order_owner: "Bạn không phải chủ đơn hàng"

@@ -78,6 +78,8 @@ en:
     price: "Price: %{direction}"
   status:
     select: "Select status"
+  access_denied: "You're not authorize for this action"
+  not_order_owner: "You're not order owner"
 
 
 
