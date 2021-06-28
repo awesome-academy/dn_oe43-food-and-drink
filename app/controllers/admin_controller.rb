@@ -1,9 +1,10 @@
 class AdminController < ApplicationController
-  before_action :require_admin
+  before_action :authenticate_user!
 
-  private
-
-  def require_admin
-    redirect_to root_path unless current_user.admin?
+  def current_ability
+    controller_name_segments = params[:controller].split "/"
+    controller_name_segments.pop
+    controller_namespace = controller_name_segments.join("/").camelize
+    @current_ability ||= Ability.new(current_user, controller_namespace)
   end
 end

@@ -1,9 +1,11 @@
 class Admin::OrdersController < AdminController
   before_action :load_order, only: :next_status
+  authorize_resource
 
   include Admin::OrdersHelper
   def index
     @orders = Order.latest.paginate(page: params[:page])
+    authorize! :index, @orders
   end
 
   def next_status
