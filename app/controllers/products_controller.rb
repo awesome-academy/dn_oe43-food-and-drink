@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :init_q, only: :index
   def show
     @product = Product.find_by id: params[:id]
     return if @product
@@ -8,29 +9,18 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.search(params[:q].downcase) if params[:q].present?
-    @products ||= Product.all
-    handle_select_category
-    handle_sort
-    @products = @products.paginate(page: params[:page])
+    @q = if params[:q][:category_id]
+           Product.ransack(params[:q][:category_id])
+         else
+           Product.ransack(params[:q])
+         end
+    @catgories = Category.select(:id, :name)
+    @products = @q.result.paginate(page: params[:page])
   end
 
   private
 
-  def handle_sort
-    return unless params[:s]
-
-    @products = if params[:s] == "asc"
-                  @products.asc_price
-                else
-                  @products.desc_price
-                end
-  end
-
-  def handle_select_category
-    return unless params[:product] && params[:product][:category_id].present?
-
-    @products = @products.filters(params[:product][:category_id])
-    @category = Category.find_by id: params[:product][:category_id]
+  def init_q
+    params[:q] ||= {}
   end
 end

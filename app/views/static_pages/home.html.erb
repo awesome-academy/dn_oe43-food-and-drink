@@ -1,8 +1,0 @@
-<% provide :title, t("index.home") %>
-<h1><%= t "index.products" %></h1>
-<%= render "products/filter_form" %>
-<%= will_paginate @products,
-  params: { controller: :static_pages, action: :home } %>
-<ul>
-  <%= render @products %>
-</ul>

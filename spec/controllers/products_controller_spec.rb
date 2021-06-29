@@ -12,31 +12,22 @@ describe ProductsController, type: :controller do
     end
 
     it "populates an arrays of searched products" do
-      products = Product.search("chicken")
-      get :index, params: {q:"chicKen"}
-      expect(assigns(:products)).to match_array products
-    end
-
-    it "populates an array of products for selected category" do
-      products = Product.filters(category.id)
-      get :index, params: {
-        product: {
-          category_id: category.id
+      products = Product.ransack("chicken").result
+      get :index, params: {q:{
+        name_or_description: "chicKen"
         }
       }
       expect(assigns(:products)).to match_array products
     end
 
-    it "populates an arrays of products with price order desc" do
-      products = Product.desc_price
-      get :index, params: {s: "desc"}
-      expect(assigns(:products).to_a).to eq products
-    end
-
-    it "populates an arrays of products with price order asc" do
-      products = Product.asc_price
-      get :index, params: {s: "asc"}
-      expect(assigns(:products).to_a).to eq products
+    it "populates an array of products for selected category" do
+      products = category.products
+      get :index, params: {
+        q: {
+          category_id: category.id
+        }
+      }
+      expect(assigns(:products)).to match_array products
     end
   end
 

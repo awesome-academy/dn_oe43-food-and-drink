@@ -22,8 +22,10 @@ en:
     order: "Order"
     error: "Something is wrong happening !"
     must_login: "You must log in before shopping ^^ "
+    price: "Price"
   category:
     nil: "Category does not exist !"
+    all: "All Categories"
   product:
     quantity: "Quantity"
     price: "Price"
