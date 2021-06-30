@@ -1,21 +1,29 @@
-<div class="row">
-  <%= form_tag("/products", method: "get") do %>
-    <div class="col-lg-4">
-      <%= label_tag(:q, t("filter.search")) %>
-      <%= text_field_tag(:q) %>
+<div class="container">
+  <%= search_form_for @q do |f| %>
+    <div class="col-lg-3">
+      <%= f.label :name_or_description_cont %>
+      <%= f.search_field :name_or_description_cont %>
     </div>
     <div class="col-lg-3">
-      <%= label_tag(:q, t("filter.select_category")) %>
-      <%= collection_select(:product, :category_id, Category.all,:id, :name) %>
+      <%= f.label :category%>
+      <%= f.select :category_id_eq, options_from_collection_for_select(@catgories, "id", "name", @q.category_id_eq),include_blank: t("category.all") %>
     </div>
     <div class="col-lg-3">
-      <%= label_tag(:s, t("filter.sort_price")) %>
-      <%= select_tag(:s, options_for_select([["↑", :asc], ["↓", :desc]])) %>
+      <%= f.label ""%>
+      <%= f.submit %>
     </div>
     <div class="col-lg-2">
-      <%= label_tag %>
-      <%= submit_tag(t("filter.sort")) %>
+      <%= sort_link(@q, :price, t("index.price")) %>
     </div>
   <% end %>
 </div>
-
+<% if params[:q][:name_or_description_cont].present? %>
+  <h3><%= t("filter.result", name: params[:q][:name_or_description_cont]) %></h3>
+<% end %>
+<% if params[:q][:s].present? %>
+  <% if params[:q][:s].eql? "price asc"%>
+    <h3><%= t("filter.price", direction: "↑") %></h3>
+  <% else %>
+    <h3><%= t("filter.price", direction: "↓") %></h3>
+  <% end %>
+<% end %>

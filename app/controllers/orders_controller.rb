@@ -1,10 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :check_cart, :load_products,
                 :handle_total, only: [:new, :create]
   before_action :load_order, only: [:show, :cancel]
   before_action :check_cancel_status, only: :cancel
-  authorize_resource
 
   include OrdersHelper
   def new
@@ -87,7 +87,6 @@ class OrdersController < ApplicationController
 
   def load_order
     authorize! :manage, @order
-    @order = Order.find_by id: params[:id]
     return if @order
 
     flash[:danger] = t "order.nil"

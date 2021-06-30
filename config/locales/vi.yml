@@ -22,8 +22,10 @@ vi:
     order: "Đặt hàng"
     error: "Có gì đó sai sai !"
     must_login: "Bạn phải đăng nhập trước khi mua sắm ^^ "
+    price: "Giá"
   category:
     nil: "Loại thực phẩm không tồn tại"
+    all: "Tất cả các loại"
   product:
     quantity: "Số lượng"
     price: "Giá"
